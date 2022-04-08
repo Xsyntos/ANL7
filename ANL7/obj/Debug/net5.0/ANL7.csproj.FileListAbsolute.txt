@@ -1,0 +1,16 @@
+D:\projects\school\ANL7\ANL7\bin\Debug\net5.0\ANL7.exe
+D:\projects\school\ANL7\ANL7\bin\Debug\net5.0\ANL7.deps.json
+D:\projects\school\ANL7\ANL7\bin\Debug\net5.0\ANL7.runtimeconfig.json
+D:\projects\school\ANL7\ANL7\bin\Debug\net5.0\ANL7.runtimeconfig.dev.json
+D:\projects\school\ANL7\ANL7\bin\Debug\net5.0\ANL7.dll
+D:\projects\school\ANL7\ANL7\bin\Debug\net5.0\ref\ANL7.dll
+D:\projects\school\ANL7\ANL7\bin\Debug\net5.0\ANL7.pdb
+D:\projects\school\ANL7\ANL7\obj\Debug\net5.0\ANL7.csproj.AssemblyReference.cache
+D:\projects\school\ANL7\ANL7\obj\Debug\net5.0\ANL7.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\school\ANL7\ANL7\obj\Debug\net5.0\ANL7.AssemblyInfoInputs.cache
+D:\projects\school\ANL7\ANL7\obj\Debug\net5.0\ANL7.AssemblyInfo.cs
+D:\projects\school\ANL7\ANL7\obj\Debug\net5.0\ANL7.csproj.CoreCompileInputs.cache
+D:\projects\school\ANL7\ANL7\obj\Debug\net5.0\ANL7.dll
+D:\projects\school\ANL7\ANL7\obj\Debug\net5.0\ref\ANL7.dll
+D:\projects\school\ANL7\ANL7\obj\Debug\net5.0\ANL7.pdb
+D:\projects\school\ANL7\ANL7\obj\Debug\net5.0\ANL7.genruntimeconfig.cache
