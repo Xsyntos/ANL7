@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Steven Rietberg 1008478
+ * Yannick de Vreede 1009289
+ */
+
 namespace ANL7.Cards
 {
     class Spell : InstantCard
@@ -17,12 +22,6 @@ namespace ANL7.Cards
                 this.Effect.UseEffect();
                 //Move the card to the discard pile
             }
-        }
-
-        public override void PlayCardToStack()
-        {
-            //Checks the energy of caster
-            base.PlayCardToStack();
         }
 
         public Spell(Effect effect, int neededEnergy, Color color, string Name)

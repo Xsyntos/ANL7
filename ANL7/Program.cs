@@ -3,6 +3,11 @@ using ANL7.Game;
 using System;
 using System.Collections.Generic;
 
+/*
+ * Steven Rietberg 1008478
+ * Yannick de Vreede 1009289
+ */
+
 namespace ANL7
 {
     class Program
@@ -113,7 +118,6 @@ namespace ANL7
             Battle.GetInstance().Turn += 2;
 
             //Start of Turn 2
-            Battle b = Battle.GetInstance();
 
 
             //Go to prepState

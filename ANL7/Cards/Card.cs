@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Steven Rietberg 1008478
+ * Yannick de Vreede 1009289
+ */
+
+
 namespace ANL7
 {
     abstract class Card
@@ -26,6 +32,8 @@ namespace ANL7
             //Move the card to the stack
             Battle.GetInstance().Stack.Add(this);
         }
+
+
     }
 
     enum Color

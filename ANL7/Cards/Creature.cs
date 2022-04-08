@@ -5,6 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Steven Rietberg 1008478
+ * Yannick de Vreede 1009289
+ */
+
 namespace ANL7.Cards
 {
     class Creature : PermantantCard
@@ -36,11 +41,6 @@ namespace ANL7.Cards
                 p.DiscardPile.Add(this);
                 return false;
             }
-        }
-        public override void PlayCardToStack()
-        {
-            //Checks the energy
-            base.PlayCardToStack();
         }
         public override void UseCard()
         {
