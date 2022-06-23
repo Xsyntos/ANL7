@@ -15,61 +15,90 @@ namespace ANL7
         static void Main(string[] args)
         {
             //Just a reference for the cards that are needed for turn 2
-            var CardsForTurn2 = new List<Card>();
-            bool NotAdded = true;
+            var CardsForTurn2Player1 = new List<Card>();
+            var CardsForTurn2Player2 = new List<Card>();
+
 
             //Preparing Deck for player 1
             Deck player1Deck = new Deck();
 
             for(int i = 0; i < 3; i++ )
             {
-                Card c = new Land(Color.Blue);
+                Card c = new Land(new BlueFactory().BlendColor());
                 player1Deck.AttachCard(c);
-                CardsForTurn2.Add(c);
+                CardsForTurn2Player1.Add(c);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                Card c = new Creature(2,2,Color.Blue,2,"Blue slime",
+
+            Card blueslime = new Creature(2,2,new BlueFactory().BlendColor(),2,"Blue slime",
                     new Effect(()=> {
                         Player p = Battle.GetInstance().getPlayerOfTurn().getOpponent();
                         p.ThrowACard();
                         Console.WriteLine(p.UserName + " just lost a card, after a blue slime appeared");
                     }
                 ));
-                player1Deck.AttachCard(c);
-                if (NotAdded)
+            Card blueslimeball = new Spell(new Effect(() =>
+            {
+                foreach(var card in Battle.GetInstance().getPlayerOfTurn().Floor)
                 {
-                    CardsForTurn2.Add(c);
-                    NotAdded = false;
+                    if( card is Creature)
+                    {
+                        Creature c = (Creature)card;
+                        c.Defence += 3;
+                        c.Attack += 3;
+                    }
                 }
-            }
+    
+            }), 2, new BlueFactory().BlendColor(), "Blue Slimeball Ball"); //We made the spell blue because otherwise there are not enough lands
 
-            for (int i = 0; i < 24; i++)
+            player1Deck.AttachCard(blueslime);
+            CardsForTurn2Player1.Add(blueslime);
+
+            player1Deck.AttachCard(blueslimeball);
+            CardsForTurn2Player1.Add(blueslimeball);
+
+            for (int i = 0; i < 25; i++)
             {
                 Card c = new Spell(new Effect(()=> 
                 {
-                    Console.WriteLine("Hey! I am Mr Mee6! Existance is Pain!");
+                    Console.WriteLine("Hey! I am Mr Mee6! I am a dummy card :D!");
                 }),
-                1,Color.Blue, "Mee6");
+                1,new BlueFactory().BlendColor(), "Mee6");
                 player1Deck.AttachCard(c);
             }
 
             Deck player2Deck = new Deck();
 
-            for (int i = 0; i < 29; i++)
+            for (int i = 0; i < 26; i++)
             {
                 Card c = new Spell(new Effect(() =>
                 {
                     Console.WriteLine("Hey! I am Mr Mee6! Existance is Pain!");
                 }),
-                1, Color.Blue, "Mee6");
+                1, new BlueFactory().BlendColor(), "Mee6");
                 player2Deck.AttachCard(c);
             }
 
-            Card d = new Land(Color.Blue);
-            player2Deck.AttachCard(d);
-            CardsForTurn2.Add(d);
+            for (int i = 0; i < 2; i++)
+            {
+                Card d = new Land(new BlueFactory().BlendColor());
+                player2Deck.AttachCard(d);
+                CardsForTurn2Player2.Add(d);
+            }
 
+            for (int i = 0; i < 2; i++)
+            {
+                Card d = new Land(new RedFactory().BlendColor());
+                player2Deck.AttachCard(d);
+                CardsForTurn2Player2.Add(d);
+            }
+
+            Card artefact1 = new Artefact(new Effect(() => {/* actual implementation wasn't necessary for this assignment */ }), new Effect(() => {/* actual implementation wasn't necessary for this assignment */ }), false);
+            player2Deck.AttachCard(artefact1);
+            CardsForTurn2Player2.Add(artefact1);
+
+            Card counterspell = new Spell(new Effect(() => {/* actual implementation wasn't necessary for this assignment */ }), 1, new RedFactory().BlendColor(), "Counter");
+            player2Deck.AttachCard(counterspell);
+            CardsForTurn2Player2.Add(counterspell);
             //Player Init
 
             Player Arold = new Player("Arold", player1Deck);
@@ -83,33 +112,41 @@ namespace ANL7
 
 
             //Cheating the land cards to the floor
-            if (Arold.Hand.Contains(CardsForTurn2[0]))
+            if (Arold.Hand.Contains(CardsForTurn2Player1[0]))
             {
                 Arold.GrabACard();
-                Arold.Hand.Remove(CardsForTurn2[0]);
+                Arold.Hand.Remove(CardsForTurn2Player1[0]);
             }
 
-            if (Arold.Hand.Contains(CardsForTurn2[1]))
+            if (Arold.Hand.Contains(CardsForTurn2Player1[1]))
             {
                 Arold.GrabACard();
-                Arold.Hand.Remove(CardsForTurn2[1]);
+                Arold.Hand.Remove(CardsForTurn2Player1[1]);
 
             }
-            if (Bryce.Hand.Contains(CardsForTurn2[4]))
+            if (Bryce.Hand.Contains(CardsForTurn2Player1[2]))
             {
                 Bryce.GrabACard();
-                Bryce.Hand.Remove(CardsForTurn2[4]);
+                Bryce.Hand.Remove(CardsForTurn2Player1[2]);
 
             }
-            Arold.Floor.Add((PermantantCard)CardsForTurn2[0]);
-            Arold.Floor.Add((PermantantCard)CardsForTurn2[1]);
-            Bryce.Floor.Add((PermantantCard)CardsForTurn2[4]);
+            if (Bryce.Hand.Contains(CardsForTurn2Player1[3]))
+            {
+                Bryce.GrabACard();
+                Bryce.Hand.Remove(CardsForTurn2Player1[3]);
 
-            //Cheating the creaturecard 
-            if (!Arold.Hand.Contains(CardsForTurn2[3]))
-                Arold.Hand[3] = CardsForTurn2[3];
-            if (!Arold.Hand.Contains(CardsForTurn2[2]))
-                Arold.Hand[2] = CardsForTurn2[2];
+            }
+            if (Bryce.Hand.Contains(CardsForTurn2Player1[4]))
+            {
+                Bryce.GrabACard();
+                Bryce.Hand.Remove(CardsForTurn2Player1[4]);
+
+            }
+
+            Arold.Floor.Add((PermantantCard)CardsForTurn2Player1[0]);
+            Arold.Floor.Add((PermantantCard)CardsForTurn2Player1[1]);
+
+
 
             //After turn 1 arold had 6 cards in his hand so we remove 1 card
             Arold.Hand.RemoveAt(6);

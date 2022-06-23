@@ -49,7 +49,7 @@ namespace ANL7
                 return c;
             }
             //If the deck is empty the player will receive a spell with neededEnergy -1.
-            return new Spell(new Effect(()=> { return; }), -1 ,Color.Blue, "Empty");
+            return new Spell(new Effect(()=> { return; }), -1 , new BlueFactory().BlendColor(), "Empty");
         }
 
     }

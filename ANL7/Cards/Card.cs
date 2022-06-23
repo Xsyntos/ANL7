@@ -35,13 +35,4 @@ namespace ANL7
 
 
     }
-
-    enum Color
-    {
-        Blue,
-        Brown,
-        White,
-        Red,
-        Green
-    }
 }

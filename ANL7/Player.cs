@@ -46,7 +46,7 @@ namespace ANL7
             if(c is Spell)
             {
                 Spell s = (Spell)c;
-                if (s.Color.Equals(Color.Blue) && s.NeededEnergy == -1)
+                if (s.Color.ColorValue == "Blue" && s.NeededEnergy == -1)
                 {
                     //Change the state of the game to the finished state
                     Battle.GetInstance().State = new FinishedState(this.getOpponent());
@@ -106,12 +106,12 @@ namespace ANL7
         /// <param name="amount"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        private bool CheckEnegry(int amount, Color color)
+        private bool CheckEnegry(int amount, string color)
         {
             int AmountOnFloor = 0;
             foreach(PermantantCard card in Floor)
             {
-                if(card is Land && !card.IsUsed && card.Color == color)
+                if(card is Land && !card.IsUsed && (card.Color.ColorValue == color || card.Color.ColorValue == ""))
                 {
                     AmountOnFloor++;
                 }
@@ -125,7 +125,7 @@ namespace ANL7
         /// </summary>
         /// <param name="amount"></param>
         /// <param name="color"></param>
-        private void UseEnergy(int amount, Color color)
+        private void UseEnergy(int amount, string color)
         {
             int i = amount;
             foreach(PermantantCard card in Floor)
@@ -133,7 +133,7 @@ namespace ANL7
                 if (i == amount)
                     break;
 
-                if (card is Land && !card.IsUsed && card.Color == color)
+                if (card is Land && !card.IsUsed && (card.Color.ColorValue == color || card.Color.ColorValue == ""))
                 {
                     card.UseCard();
                     i++;
@@ -157,11 +157,11 @@ namespace ANL7
                     }
                     else
                     {
-                        if (CheckEnegry(card.NeededEnergy, card.Color))
+                        if (CheckEnegry(card.NeededEnergy, card.Color.ColorValue))
                         {
                             Hand.Remove(card);
                             card.PlayCardToStack();
-                            UseEnergy(card.NeededEnergy, card.Color);
+                            UseEnergy(card.NeededEnergy, card.Color.ColorValue);
                             var p = Battle.GetInstance().NextPlayer();
                             Console.WriteLine(p.UserName + " do you want to counter?");
                         }
