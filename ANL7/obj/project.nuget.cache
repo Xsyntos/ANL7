@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "yY0RP1lqNrsQB8Djuki9VUZeHCzH/p/pylJb7FWxS/DPHGm7w70iFgO7Ps/n9WfSMVIh5jjLb62o2f1cs14JXA==",
+  "dgSpecHash": "fdu7b4uE2HtNR0+ursyOYX2yEaTUz98My+bc5JMaIX++zDgFODpcDz6eCtMecAezowTD+sR/r0C2vNzgAy1HfA==",
   "success": true,
-  "projectFilePath": "D:\\projects\\school\\ANL7\\ANL7\\ANL7.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Projecten\\School\\ANL7\\ANL7\\ANL7.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Xsyntos\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512",
+    "C:\\Users\\Xsyntos\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Xsyntos\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Xsyntos\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -16,12 +16,8 @@ namespace ANL7.Cards
 
         public override void UseCardInStack()
         {
-            //Check first if the player has enough energy
-            if(true)
-            {
-                this.Effect.UseEffect();
-                //Move the card to the discard pile
-            }
+            this.Effect.UseEffect();
+            Battle.GetInstance().getPlayerOfTurn().DiscardPile.Add(this);
         }
 
         public Spell(Effect effect, int neededEnergy, Color color, string Name)

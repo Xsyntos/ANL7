@@ -1,4 +1,5 @@
-﻿using ANL7.Game;
+﻿using ANL7.Cards;
+using ANL7.Game;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,9 +46,14 @@ namespace ANL7
         /// </summary>
         public void NotifyStack()
         {
+            Stack.Reverse();
             foreach(Card card in Stack)
             {
-                card.UseCardInStack();
+                if(card is CreatureAttack)
+                    this.NextPlayer();
+
+                if (card != null)
+                    card.UseCardInStack();
                 this.NextPlayer();
             }
             this.NextPlayer();

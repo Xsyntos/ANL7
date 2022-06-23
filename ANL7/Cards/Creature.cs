@@ -51,7 +51,8 @@ namespace ANL7.Cards
                 if (Effect != null)
                     this.Effect.UseEffect();
 
-                Battle.GetInstance().getPlayerOfTurn().getOpponent().GetDamage(this.Attack);
+                CreatureAttack attack = new CreatureAttack(Attack, $"{this.Name} Attack");
+                Battle.GetInstance().Stack.Add(attack);
 
                 ToggleUsed();
             }
@@ -63,6 +64,25 @@ namespace ANL7.Cards
             if(this.StartEffect != null)
                 this.StartEffect.UseEffect();
 
+        }
+    }
+
+    //We decided to make the attack of a creature a card because it must be counterable
+    class CreatureAttack : InstantCard
+    {
+        public int attackdamage;
+
+        public override void UseCardInStack()
+        {
+            Battle.GetInstance().getPlayerOfTurn().getOpponent().GetDamage(attackdamage);
+        }
+
+        public CreatureAttack(int attackdamage, string name)
+        {
+            this.attackdamage = attackdamage;
+            this.Name = name;
+            this.Color = new BlueFactory().BlendColor();
+            this.NeededEnergy = 0;
         }
     }
 }

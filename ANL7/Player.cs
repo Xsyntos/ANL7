@@ -111,7 +111,7 @@ namespace ANL7
             int AmountOnFloor = 0;
             foreach(PermantantCard card in Floor)
             {
-                if(card is Land && !card.IsUsed && (card.Color.ColorValue == color || card.Color.ColorValue == ""))
+                if(card is Land && !card.IsUsed && (card.Color.ColorValue == color || color == ""))
                 {
                     AmountOnFloor++;
                 }
@@ -127,13 +127,13 @@ namespace ANL7
         /// <param name="color"></param>
         private void UseEnergy(int amount, string color)
         {
-            int i = amount;
+            int i = 0;
             foreach(PermantantCard card in Floor)
             {
                 if (i == amount)
                     break;
 
-                if (card is Land && !card.IsUsed && (card.Color.ColorValue == color || card.Color.ColorValue == ""))
+                if (card is Land && !card.IsUsed && (card.Color.ColorValue == color || color == ""))
                 {
                     card.UseCard();
                     i++;

@@ -13,12 +13,13 @@ namespace ANL7.Cards
         public Effect ReturnEffect;
 
 
-        public Artefact(Effect effect, Effect returneffect, bool alive)
+        public Artefact(Effect effect, Effect returneffect, bool alive, int cost)
         {
             this.Effect = effect;
             this.ReturnEffect = returneffect;
             this.Color = new NeutralFactory().BlendColor();
             this.Alive = alive;
+            this.NeededEnergy = cost;
         }
 
         public override bool CheckIfAlive()
@@ -28,13 +29,7 @@ namespace ANL7.Cards
 
         public override void UseCard()
         {
-            if (!CheckIfAlive())
-            {
-                Player p = Battle.GetInstance().getPlayerOfTurn();
-                p.Floor.Remove(this);
-                p.DiscardPile.Add(this);
-                this.ReturnEffect.UseEffect();
-            }
+
         }
 
         public override void UseCardInStack()
